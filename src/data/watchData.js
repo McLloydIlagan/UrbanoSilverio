@@ -1,4 +1,4 @@
-﻿export const brandData = {
+export const brandData = {
   name: "Urbano Silverio",
   tagline: "Crafted for Those Who Value Time.",
   subtagline: "Swiss-inspired precision. Timeless elegance. Uncompromising craftsmanship.",
