@@ -2,6 +2,8 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { featuredModel } from "../data/watchData";
+import featuredImg from "../assets/watch-chronograph-rubber-front.jpg";
+import moonphaseImg from "../assets/watch-chronograph-moonphase.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -126,11 +128,25 @@ export default function FeaturedModel() {
             </div>
           </div>
 
-          {/* Watch */}
+          {/* Watch — real photo + floating illustration */}
           <div className="featured-watch flex items-center justify-center relative">
             <div className="absolute inset-0 pointer-events-none" aria-hidden="true"
               style={{ background: "radial-gradient(ellipse 70% 70% at 50% 50%, rgba(201,168,76,0.08) 0%, transparent 70%)" }} />
-            <FeaturedWatch />
+            {/* Real photo */}
+            <div className="relative w-72 sm:w-80 watch-float">
+              <img
+                src={featuredImg}
+                alt="Urbano Silverio Chronograph — featured model"
+                className="w-full h-auto object-contain drop-shadow-2xl"
+                style={{ filter: "drop-shadow(0 30px 60px rgba(0,0,0,0.8)) drop-shadow(0 0 30px rgba(201,168,76,0.15))" }}
+              />
+            </div>
+            {/* Moonphase inset */}
+            <div className="absolute bottom-0 right-0 w-28 h-28 rounded-sm overflow-hidden border border-[var(--gold)]/20 shadow-2xl">
+              <img src={moonphaseImg} alt="Moonphase complication" className="w-full h-full object-cover object-center" />
+              <div className="absolute inset-0 bg-black/30" />
+              <div className="absolute bottom-1.5 left-2 section-label text-[0.5rem] opacity-70">Moonphase</div>
+            </div>
           </div>
         </div>
       </div>

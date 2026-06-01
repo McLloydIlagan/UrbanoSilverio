@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FaArrowDown, FaArrowRight } from "react-icons/fa";
 import WatchCanvas from "./WatchCanvas";
+import heroImg from "../assets/watch-hero-showcase.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -44,8 +45,11 @@ export default function Hero() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       aria-label="Hero section"
     >
-      {/* Dark gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-[#0d0d0d] to-[#111008]" aria-hidden="true" />
+      {/* Dark gradient background with hero image */}
+      <div className="absolute inset-0" aria-hidden="true">
+        <img src={heroImg} alt="" className="w-full h-full object-cover object-center opacity-20" />
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-[#0d0d0d]/95 to-[#111008]/90" />
+      </div>
 
       {/* Radial gold glow */}
       <div

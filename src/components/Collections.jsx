@@ -3,38 +3,19 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { collections } from "../data/watchData";
 import { FaArrowRight } from "react-icons/fa";
+import imgClassic from "../assets/watch-chronograph-leather-wide.jpg";
+import imgChronograph from "../assets/watch-chronograph-steel-flat.jpg";
+import imgHeritage from "../assets/watch-skeleton-silver-front.jpg";
+import imgExecutive from "../assets/watch-skeleton-black-angled.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// SVG watch face placeholder per collection
-function WatchFace({ accent, size = 180 }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <circle cx="90" cy="90" r="88" fill="#111" stroke={accent} strokeWidth="1.5" />
-      <circle cx="90" cy="90" r="78" fill="#0a0a0a" stroke={accent} strokeWidth="0.5" strokeOpacity="0.4" />
-      <circle cx="90" cy="90" r="68" fill="#080808" />
-      {Array.from({ length: 12 }).map((_, i) => {
-        const angle = (i / 12) * Math.PI * 2 - Math.PI / 2;
-        const r1 = 62, r2 = i % 3 === 0 ? 54 : 58;
-        return (
-          <line key={i}
-            x1={90 + r1 * Math.cos(angle)} y1={90 + r1 * Math.sin(angle)}
-            x2={90 + r2 * Math.cos(angle)} y2={90 + r2 * Math.sin(angle)}
-            stroke={accent} strokeWidth={i % 3 === 0 ? 2 : 1} strokeOpacity="0.8"
-          />
-        );
-      })}
-      <text x="90" y="60" textAnchor="middle" fill={accent} fontSize="7" fontFamily="Cormorant Garamond, serif" letterSpacing="3" opacity="0.9">URBANO</text>
-      <text x="90" y="70" textAnchor="middle" fill="#888" fontSize="5" fontFamily="Montserrat, sans-serif" letterSpacing="2" opacity="0.7">SILVERIO</text>
-      {/* Hour hand */}
-      <line x1="90" y1="90" x2="90" y2="42" stroke={accent} strokeWidth="2.5" strokeLinecap="round" transform="rotate(-30 90 90)" />
-      {/* Minute hand */}
-      <line x1="90" y1="90" x2="90" y2="36" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" transform="rotate(120 90 90)" />
-      <circle cx="90" cy="90" r="4" fill={accent} />
-      <circle cx="90" cy="90" r="2" fill="#0a0a0a" />
-    </svg>
-  );
-}
+const collectionImages = {
+  classic: imgClassic,
+  chronograph: imgChronograph,
+  heritage: imgHeritage,
+  executive: imgExecutive,
+};
 
 export default function Collections() {
   const sectionRef = useRef(null);
@@ -73,19 +54,23 @@ export default function Collections() {
               role="article"
               aria-label={col.name}
             >
-              {/* Watch visual */}
-              <div
-                className="relative h-56 flex items-center justify-center overflow-hidden"
-                style={{ background: `linear-gradient(135deg, #0d0d0d, #1a1a1a)` }}
-              >
+              {/* Watch image */}
+              <div className="relative h-64 overflow-hidden">
+                <img
+                  src={collectionImages[col.id]}
+                  alt={col.name}
+                  className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                />
                 <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{ background: `radial-gradient(ellipse at 50% 50%, ${col.accent}15 0%, transparent 70%)` }}
+                  className="absolute inset-0"
+                  style={{ background: `linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 50%, transparent 100%)` }}
                   aria-hidden="true"
                 />
-                <div className="transform group-hover:scale-110 transition-transform duration-700 watch-float">
-                  <WatchFace accent={col.accent} />
-                </div>
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{ background: `radial-gradient(ellipse at 50% 50%, ${col.accent}20 0%, transparent 70%)` }}
+                  aria-hidden="true"
+                />
               </div>
 
               {/* Content */}

@@ -2,6 +2,8 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { craftsmanship } from "../data/watchData";
+import macroImg from "../assets/craft-movement-macro.jpg";
+import skeletonImg from "../assets/watch-skeleton-silver-clean.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -56,6 +58,20 @@ export default function Craftsmanship() {
               <div className="mt-6 w-8 h-px bg-gradient-to-r from-[var(--gold)] to-transparent group-hover:w-16 transition-all duration-500" aria-hidden="true" />
             </div>
           ))}
+        </div>
+
+        {/* Cinematic image strip */}
+        <div className="mt-16 grid grid-cols-2 gap-4 mb-16">
+          <div className="relative h-48 overflow-hidden rounded-sm">
+            <img src={macroImg} alt="Movement macro detail" className="w-full h-full object-cover object-center" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+            <div className="absolute bottom-3 left-4 section-label opacity-70">Movement Detail</div>
+          </div>
+          <div className="relative h-48 overflow-hidden rounded-sm">
+            <img src={skeletonImg} alt="Skeleton dial" className="w-full h-full object-cover object-center" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+            <div className="absolute bottom-3 left-4 section-label opacity-70">Skeleton Architecture</div>
+          </div>
         </div>
 
         {/* Bottom cinematic strip */}

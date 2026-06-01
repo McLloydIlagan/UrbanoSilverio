@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import logoImg from "../assets/logo.png";
 
 const links = [
   { href: "#collections", label: "Collections" },
@@ -37,11 +38,14 @@ export default function Navbar() {
         <a
           href="#hero"
           onClick={(e) => scrollTo(e, "#hero")}
-          className="flex flex-col leading-none"
+          className="flex items-center gap-3"
           aria-label="Urbano Silverio home"
         >
-          <span className="font-display text-xl font-light tracking-[0.3em] text-white">URBANO</span>
-          <span className="font-display text-xl font-light tracking-[0.3em] gold-text">SILVERIO</span>
+          <img src={logoImg} alt="Urbano Silverio" className="h-10 w-10 object-contain" />
+          <div className="flex flex-col leading-none">
+            <span className="font-display text-sm font-light tracking-[0.25em] text-white">URBANO</span>
+            <span className="font-display text-sm font-light tracking-[0.25em] gold-text">SILVERIO</span>
+          </div>
         </a>
 
         {/* Desktop links */}

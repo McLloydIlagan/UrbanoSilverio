@@ -8,8 +8,13 @@ export default function Footer() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <div className="font-display text-2xl font-light tracking-[0.3em] text-white mb-1">URBANO</div>
-            <div className="font-display text-2xl font-light tracking-[0.3em] gold-text mb-4">SILVERIO</div>
+            <div className="flex items-center gap-3 mb-4">
+              <img src="/UrbanoSilverio/logo.png" alt="Urbano Silverio" className="h-10 w-10 object-contain" />
+              <div>
+                <div className="font-display text-lg font-light tracking-[0.25em] text-white">URBANO</div>
+                <div className="font-display text-lg font-light tracking-[0.25em] gold-text">SILVERIO</div>
+              </div>
+            </div>
             <p className="text-[var(--text-muted)] text-xs font-light leading-relaxed max-w-xs">
               Crafting exceptional timepieces since 2008. Every watch is a testament to the enduring art of Swiss-inspired horology.
             </p>
